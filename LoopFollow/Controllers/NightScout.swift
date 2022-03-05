@@ -497,8 +497,8 @@ extension MainViewController {
             //print("Loop: \(lastLoopRecord)")
         // loop use lastLoopRecord["timestamp"]
         //if let lastLoopTime = formatter.date(from: (lastLoopRecord["timestamp"] as! String))?.timeIntervalSince1970  {
-        // FreeAPS-X Entry use created_at
-            if let lastLoopTime = formatter.date(from: (lastLoopRecord["created_at"] as! String))?.timeIntervalSince1970  {
+        // FreeAPS-X Entry use lastDeviceStatus?["created_at"]
+            if let lastLoopTime = formatter.date(from: (lastDeviceStatus?["created_at"] as! String))?.timeIntervalSince1970  {
                 UserDefaultsRepository.alertLastLoopTime.value = lastLoopTime
                 if UserDefaultsRepository.debugLog.value { self.writeDebugLog(value: "lastLoopTime: " + String(lastLoopTime)) }
                 if let failure = lastLoopRecord["failureReason"] {
