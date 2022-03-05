@@ -8,18 +8,21 @@ All Changes are made in Nightscout.swift
 
 changed to lastDeviceStatus?["openaps"]
 changed to formatter.date(from: (lastDeviceStatus?["created_at"]
-<img width="812" alt="Pasted Graphic 2" src="https://user-images.githubusercontent.com/19916956/156892040-d7a974dd-5595-4b21-b98f-519f17af6a1e.png">
+<img width="865" alt="Pasted Graphic" src="https://user-images.githubusercontent.com/19916956/156892052-ace3b3be-46ae-40e7-839d-d5ed65dec848.png">
 
-changed to   (enacated) and allo cob to COB)
+to add CARB dots and values in GRAPH:
+
+changed to cobdata = lastLoopRecord["enacted"] and all cob to COB)
+
                         if let cobdata = lastLoopRecord["enacted"] as? [String:AnyObject] {
                         tableData[1].value = String(format:"%.0f", cobdata["COB"] as! Double)
                         latestCOB = String(format:"%.0f", cobdata["COB"] as! Double)
                    
-<img width="865" alt="Pasted Graphic" src="https://user-images.githubusercontent.com/19916956/156892052-ace3b3be-46ae-40e7-839d-d5ed65dec848.png">
 
 <img width="874" alt="Pasted Graphic 1" src="https://user-images.githubusercontent.com/19916956/156892055-2d9739a3-29a4-4298-8edb-1748ad73c896.png">
 
-added case Bolus to match the Bolus Dots
+added "case Bolus" to match the Bolus Dots
+
 <img width="867" alt="Pasted Graphic" src="https://user-images.githubusercontent.com/19916956/156892058-731b8527-09b8-44d4-85b3-780d8f36c74b.png">
 
 
