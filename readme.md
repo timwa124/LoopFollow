@@ -12,12 +12,7 @@ changed to formatter.date(from: (lastDeviceStatus?["created_at"]
 
 to add CARB dots and values in GRAPH:
 
-changed to cobdata = lastLoopRecord["enacted"] and all cob to COB)
-
-                        if let cobdata = lastLoopRecord["enacted"] as? [String:AnyObject] {
-                        tableData[1].value = String(format:"%.0f", cobdata["COB"] as! Double)
-                        latestCOB = String(format:"%.0f", cobdata["COB"] as! Double)
-                   
+changed to cobdata = lastLoopRecord["enacted"] and all cob to COB)                   
 
 <img width="874" alt="Pasted Graphic 1" src="https://user-images.githubusercontent.com/19916956/156892055-2d9739a3-29a4-4298-8edb-1748ad73c896.png">
 
