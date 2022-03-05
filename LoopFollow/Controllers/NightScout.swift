@@ -489,10 +489,16 @@ extension MainViewController {
             }
         }
         
-        // Loop
-        if let lastLoopRecord = lastDeviceStatus?["loop"] as! [String : AnyObject]? {
+        
+        // loop use lastDeviceStatus?["loop"]
+        //if let lastLoopRecord = lastDeviceStatus?["loop"] as! [String : AnyObject]? {
+        // FreeAPS-X Entry use openaps
+        if let lastLoopRecord = lastDeviceStatus?["openaps"] as! [String : AnyObject]? {
             //print("Loop: \(lastLoopRecord)")
-            if let lastLoopTime = formatter.date(from: (lastLoopRecord["timestamp"] as! String))?.timeIntervalSince1970  {
+        // loop use lastLoopRecord["timestamp"]
+        //if let lastLoopTime = formatter.date(from: (lastLoopRecord["timestamp"] as! String))?.timeIntervalSince1970  {
+        // FreeAPS-X Entry use created_at
+            if let lastLoopTime = formatter.date(from: (lastLoopRecord["created_at"] as! String))?.timeIntervalSince1970  {
                 UserDefaultsRepository.alertLastLoopTime.value = lastLoopTime
                 if UserDefaultsRepository.debugLog.value { self.writeDebugLog(value: "lastLoopTime: " + String(lastLoopTime)) }
                 if let failure = lastLoopRecord["failureReason"] {
@@ -512,10 +518,17 @@ extension MainViewController {
                         tableData[0].value = String(format:"%.2f", (iobdata["iob"] as! Double))
                         latestIOB = String(format:"%.2f", (iobdata["iob"] as! Double))
                     }
-                    if let cobdata = lastLoopRecord["cob"] as? [String:AnyObject] {
-                        tableData[1].value = String(format:"%.0f", cobdata["cob"] as! Double)
-                        latestCOB = String(format:"%.0f", cobdata["cob"] as! Double)
+                  //loop App
+                  //  if let cobdata = lastLoopRecord["cob"] as? [String:AnyObject] {
+                  //      tableData[1].value = String(format:"%.0f", cobdata["cob"] as! Double)
+                  //      latestCOB = String(format:"%.0f", cobdata["cob"] as! Double)
+                  //  }
+                  //FreeAPS-X  
+                      if let cobdata = lastLoopRecord["COB"] as? [String:AnyObject] {
+                        tableData[1].value = String(format:"%.0f", cobdata["COB"] as! Double)
+                        latestCOB = String(format:"%.0f", cobdata["COB"] as! Double)
                     }
+                  
                     if let predictdata = lastLoopRecord["predicted"] as? [String:AnyObject] {
                         let prediction = predictdata["values"] as! [Double]
                         PredictionLabel.text = bgUnits.toDisplayUnits(String(Int(prediction.last!)))
