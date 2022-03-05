@@ -524,7 +524,7 @@ extension MainViewController {
                   //      latestCOB = String(format:"%.0f", cobdata["cob"] as! Double)
                   //  }
                   //FreeAPS-X  
-                      if let cobdata = lastLoopRecord["COB"] as? [String:AnyObject] {
+                      if let cobdata = lastLoopRecord["enacted"] as? [String:AnyObject] {
                         tableData[1].value = String(format:"%.0f", cobdata["COB"] as! Double)
                         latestCOB = String(format:"%.0f", cobdata["COB"] as! Double)
                     }
